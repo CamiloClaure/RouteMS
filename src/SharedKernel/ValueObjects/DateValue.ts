@@ -1,16 +1,16 @@
-import { ValueObject } from "../Core/ValueObject";
+import {ValueObject} from "../Core/ValueObject"
 
 export class DateValue extends ValueObject {
-  date: Date | undefined;
+  date: Date
 
   constructor(date: Date) {
-    super();
+    super()
     // TODO add rule validation
 
-    this.date = date;
+    this.date = date
   }
 
-  getDate(value: DateValue) {
-    return value.date;
+  getDate(value: DateValue): Date {
+    return value.date
   }
 }

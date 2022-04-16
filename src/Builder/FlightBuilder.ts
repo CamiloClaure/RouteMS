@@ -1,30 +1,34 @@
-import { Flight } from "../Domain/Model/Flight/Flight";
-import { NameValue } from "../SharedKernel/ValueObjects/NameValue";
-import { DateValue } from "../SharedKernel/ValueObjects/DateValue";
+import {Flight} from "../Domain/Model/Flight/Flight"
+import {DateValue} from "../SharedKernel/ValueObjects/DateValue"
+import {Destination} from "../Domain/Model/Destination/Destination"
 export class FlightBuilder {
-  private readonly _flight: Flight;
+  private readonly _flight: Flight
 
   constructor() {
-    this._flight = new Flight();
+    this._flight = new Flight()
   }
 
   setFlightDate(flightDate: Date) {
-    this._flight.flightDate = new DateValue(flightDate);
+    this._flight.flightDate = new DateValue(flightDate)
+    return this
   }
 
   setDepartureTime(departureTime: Date) {
-    this._flight.departureTime = new DateValue(departureTime);
+    this._flight.departureTime = new DateValue(departureTime)
+    return this
   }
 
   setArrivalTime(arrivalTime: Date) {
-    this._flight.arrivalTime = new DateValue(arrivalTime);
+    this._flight.arrivalTime = new DateValue(arrivalTime)
+    return this
   }
 
-  setDestination(destination: string) {
-    this._flight.destination = destination;
+  setDestination(destination: Destination) {
+    this._flight.destination = destination
+    return this
   }
 
   build(): Flight {
-    return this._flight;
+    return this._flight
   }
 }
