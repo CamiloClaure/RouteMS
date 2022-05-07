@@ -17,7 +17,7 @@ flightRouter.post('/', (req, res, next) => {
     }
     const command = createFlightCommandFactory.makeCommand(commandConfig)
     command.execute().then(result => {
-        const statusCode = result.status ? 200 : 500;
+        const statusCode = result.result ? 200 : 500;
         res.status(statusCode).send(result)
     });
 })

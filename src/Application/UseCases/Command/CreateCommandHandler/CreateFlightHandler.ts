@@ -37,8 +37,8 @@ export class CreateFlightHandler<ICommand> {
             .setRoute(routeModel.result)
             .build()
 
-        const status = await flightRepository.createFlight(flight);
+        const flightId = await flightRepository.createFlight(flight);
 
-        return { status }
+        return { flightId }
     }
 }

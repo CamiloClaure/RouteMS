@@ -18,9 +18,8 @@ export class Flight {
     })
     id: string;
 
-    @OneToOne(() => Route)
-    @JoinColumn()
-    route: Route
+    @Column({ nullable: true })
+    route: string
 
     @Column({ nullable: true })
     departureDate: Date;

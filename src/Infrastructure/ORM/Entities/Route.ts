@@ -8,7 +8,7 @@ export class Route extends GenericEntity{
         this.id = id
     }
 
-    @Column({ nullable: true })
+     @Column({ nullable: true })
     name: string;
 
     @Column({ nullable: true })

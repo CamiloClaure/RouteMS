@@ -22,9 +22,9 @@ export class CreateFlightCommand implements ICommand {
         const command = crudCommandFactory.makeCommand(config)
 
         const results = await command.execute()
-
-        return results.status ?
-            { status: true } :
-            { status: false }
+        console.log(results)
+        return results ?
+            { result: results } :
+            { result: false }
     }
 }

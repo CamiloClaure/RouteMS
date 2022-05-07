@@ -1,3 +1,3 @@
 export type ICommandResponse = {
-    status:boolean
+    result:any
 }

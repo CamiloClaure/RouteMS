@@ -22,18 +22,18 @@ export class FlightRepository implements IFlightRepository{
         // la logica del constructor tiene la instanciacion del repositorio objetivo
         let flight = new Flight()
         flight.id = flightDomain.id;
-        flight.route = new Route(flightDomain.route.id);
+        flight.route = new Route(flightDomain.route.id).id;
         flight.arrivalDate = flightDomain.arrivalDate.date;
         flight.departureDate = flightDomain.departureDate.date;
         const status = getManager().getRepository('Flight')
             .save(flight)
             .then(flight => {
-                console.log(`game added success: ${flight.id}`)
-                return true
+                console.log(`flight added success: ${flight.id}`)
+                return flight.id
             })
             .catch(err => {
-                console.log(`error adding game: ${err}`)
-                return false
+                console.log(`error adding flight: ${err}`)
+                return null
             })
         return Promise.resolve(status);
 
