@@ -1,8 +1,10 @@
 import {IFlightRepository} from "../../../Domain/Repositories/IFlightRepository";
-import {Flight} from "../../../Domain/Model/Flight/Flight";
+import {Flight as FlightDomain}  from "../../../Domain/Model/Flight/Flight";
+import {Flight}  from "../Entities/Flight";
 import {IBussinessRule} from "../../../SharedKernel/Core/IBussinessRule";
 import {DomainEvent} from "../../../SharedKernel/Core/DomainEvent";
 import {getManager} from "typeorm";
+import {Route} from "../Entities/Route";
 
 // @ts-ignore
 export class FlightRepository implements IFlightRepository{
@@ -15,9 +17,14 @@ export class FlightRepository implements IFlightRepository{
         return Promise.resolve(undefined);
     }
 
-    createFlight(flight: Flight): Promise<any> {
+    createFlight(flightDomain: FlightDomain): Promise<any> {
         // TODO abstraer la conexion cosa que quede funcion tipo new Model("Flight"); model.save(flight)
         // la logica del constructor tiene la instanciacion del repositorio objetivo
+        let flight = new Flight()
+        flight.id = flightDomain.id;
+        flight.route = new Route(flightDomain.route.id);
+        flight.arrivalDate = flightDomain.arrivalDate.date;
+        flight.departureDate = flightDomain.departureDate.date;
         const status = getManager().getRepository('Flight')
             .save(flight)
             .then(flight => {
@@ -32,11 +39,11 @@ export class FlightRepository implements IFlightRepository{
 
     }
 
-    removeFlight(flight: Flight): Promise<any> {
+    removeFlight(flight: FlightDomain): Promise<any> {
         return Promise.resolve(undefined);
     }
 
-    updateFlight(flight: Flight): Promise<any> {
+    updateFlight(flight: FlightDomain): Promise<any> {
         return Promise.resolve(undefined);
     }
 

@@ -1,48 +1,40 @@
 import {AggregateRoot} from "../../../SharedKernel/Core/AggregateRoot"
 import {v4 as uuidv4} from "uuid"
 import {DateValue} from "../../../SharedKernel/ValueObjects/DateValue"
-import {Destination} from "../Destination/Destination"
+import {Route} from "../Route/Route"
 
 export class Flight extends AggregateRoot<string> {
-  private _flightDate!: DateValue
-  private _departureTime!: DateValue
-  private _arrivalTime!: DateValue
-  private _destination!: Destination
+  private _departureDate!: DateValue
+  private _arrivalDate!: DateValue
+  private _route!: Route
 
   constructor() {
     super()
     this.id = uuidv4()
   }
 
-  get flightDate(): DateValue {
-    return this._flightDate
+
+  get departureDate(): DateValue {
+    return this._departureDate
   }
 
-  set flightDate(value: DateValue) {
-    this._flightDate = value
+  set departureDate(value: DateValue) {
+    this._departureDate = value
   }
 
-  get departureTime(): DateValue {
-    return this._departureTime
+  get arrivalDate(): DateValue {
+    return this._arrivalDate
   }
 
-  set departureTime(value: DateValue) {
-    this._departureTime = value
+  set arrivalDate(value: DateValue) {
+    this._arrivalDate = value
   }
 
-  get arrivalTime(): DateValue {
-    return this._arrivalTime
+  get route(): Route {
+    return this._route
   }
 
-  set arrivalTime(value: DateValue) {
-    this._arrivalTime = value
-  }
-
-  get destination(): Destination {
-    return this._destination
-  }
-
-  set destination(value: Destination) {
-    this._destination = value
+  set route(value: Route) {
+    this._route = value
   }
 }

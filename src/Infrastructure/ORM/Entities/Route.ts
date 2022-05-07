@@ -1,11 +1,12 @@
-import {Entity, PrimaryGeneratedColumn, Column, Timestamp, OneToMany} from "typeorm";
-import {RouteDetail} from "./RouteDetail";
+import {Entity, PrimaryGeneratedColumn, Column, Timestamp, OneToMany, PrimaryColumn} from "typeorm";
+import {GenericEntity} from "./GenericEntity";
 
 @Entity()
-export class Route {
-
-    @PrimaryGeneratedColumn()
-    id: string;
+export class Route extends GenericEntity{
+    constructor(id: string) {
+        super();
+        this.id = id
+    }
 
     @Column({ nullable: true })
     name: string;
@@ -19,7 +20,5 @@ export class Route {
     @Column({ nullable: true })
     totalDuration: number
 
-    @OneToMany(() => RouteDetail, (route) => route.route)
-    routeDetails: RouteDetail[]
 }
 

@@ -1,6 +1,6 @@
 import {Flight} from "../Model/Flight/Flight"
 import {DateValue} from "../../SharedKernel/ValueObjects/DateValue"
-import {Destination} from "../Model/Destination/Destination"
+import {Route} from "../Model/Route/Route"
 export class FlightBuilder {
   private readonly _flight: Flight
 
@@ -8,23 +8,19 @@ export class FlightBuilder {
     this._flight = new Flight()
   }
 
-  setFlightDate(flightDate: Date) {
-    this._flight.flightDate = new DateValue(flightDate)
+
+  setDepartureDate(departureTime: Date) {
+    this._flight.departureDate = new DateValue(departureTime)
     return this
   }
 
-  setDepartureTime(departureTime: Date) {
-    this._flight.departureTime = new DateValue(departureTime)
+  setArrivalDate(arrivalTime: Date) {
+    this._flight.arrivalDate = new DateValue(arrivalTime)
     return this
   }
 
-  setArrivalTime(arrivalTime: Date) {
-    this._flight.arrivalTime = new DateValue(arrivalTime)
-    return this
-  }
-
-  setDestination(destination: Destination) {
-    this._flight.destination = destination
+  setRoute(route: Route) {
+    this._flight.route = route
     return this
   }
 

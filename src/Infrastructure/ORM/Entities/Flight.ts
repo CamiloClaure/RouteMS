@@ -1,21 +1,32 @@
-import {Entity, PrimaryGeneratedColumn, Column, Timestamp, OneToMany} from "typeorm";
-import {RouteDetail} from "./RouteDetail";
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    Timestamp,
+    OneToMany,
+    PrimaryColumn,
+    OneToOne,
+    JoinColumn
+} from "typeorm";
+import {Route} from "./Route";
 
 @Entity()
 export class Flight {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn("varchar", {
+        length: 100
+    })
     id: string;
 
-    @Column({ nullable: true })
-    route: number;
+    @OneToOne(() => Route)
+    @JoinColumn()
+    route: Route
 
     @Column({ nullable: true })
-    departureDate: Timestamp;
+    departureDate: Date;
 
     @Column({ nullable: true })
-    arrivalDate: Timestamp;
-
+    arrivalDate: Date;
 
 }
 

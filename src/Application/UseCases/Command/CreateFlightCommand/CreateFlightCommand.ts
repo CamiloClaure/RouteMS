@@ -1,28 +1,27 @@
 import ICommand from "../ICommand";
-import {Flight} from "../../../Dto/FligthDto";
-import {CreateFlightCommandFactory} from "./CreateFlightCommandFactory";
-import {CRUDCommandFactory} from "../CreateCommandQuery/CRUDFlightFactory";
+import {CRUDCommandFactory} from "../CreateCommandHandler/CRUDFlightFactory";
+import {FlightDto} from "../../../Dto/FligthDto";
 export class CreateFlightCommand implements ICommand {
-    private flight:Flight;
+    private flight:FlightDto;
     private name: string = "";
 
-    constructor(flight:Flight) {
+    constructor(flight:FlightDto) {
         this.flight = flight
     }
 
-    public execute = () => {
+    public execute = async () => {
         const crudCommandFactory = new CRUDCommandFactory()
 
         // const commandName = DomainGameCommands.CreateGame.name
-        const commandName = "CreateCommand"
+        const commandName = "CreateFlightHandler"
 
         const config = {
             commandName,
-            args: "CreateFlight"
+            args: this.flight
         }
         const command = crudCommandFactory.makeCommand(config)
 
-        const results = command.execute()
+        const results = await command.execute()
 
         return results.status ?
             { status: true } :
