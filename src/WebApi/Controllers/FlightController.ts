@@ -20,8 +20,18 @@ flightRouter.post('/', (req, res, next) => {
         const statusCode = result.status ? 200 : 500;
         res.status(statusCode).send(result)
     });
+})
 
+flightRouter.get('/', (req, res, next) => {
+    res.status(501).send("Method not implemented")
+})
 
+flightRouter.put('/', (req, res, next) => {
+    res.status(501).send("Method not implemented")
+})
+
+flightRouter.delete('/', (req, res, next) => {
+    res.status(501).send("Method not implemented")
 })
 
 

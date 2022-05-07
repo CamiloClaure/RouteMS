@@ -2,11 +2,13 @@ import express from "express"
 import bodyParser from "body-parser"
 import {createConnection} from "typeorm";
 import flightRouter from "./WebApi/Controllers/FlightController";
+import routeControllerRouter from "./WebApi/Controllers/RouteController";
 
 const app = express()
 app.listen(3000)
 app.use(bodyParser.json())
 app.use("/api/flight",flightRouter)
+app.use("/api/route",routeControllerRouter)
 app.post("/", function (req, res) {
   // const airPort = new Airport("Viru Viru")
   // const flight = new FlightBuilder()
