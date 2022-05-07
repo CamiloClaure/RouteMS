@@ -1,6 +1,6 @@
 import {PrimaryColumn} from "typeorm";
 
-export class GenericEntity {
+export class CommonEntity {
     @PrimaryColumn("varchar", {
         length: 100
     })

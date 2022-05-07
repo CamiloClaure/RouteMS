@@ -1,9 +1,6 @@
 import {FlightRepository} from "../../../../Infrastructure/ORM/Repository/FlightRepository";
-import {Flight} from "../../../../Domain/Model/Flight/Flight";
 import {FlightDto} from "../../../Dto/FligthDto";
 import {FlightBuilder} from "../../../../Domain/Builder/FlightBuilder";
-import {Route} from "../../../../Domain/Model/Route/Route";
-import {RouteBuilder} from "../../../../Domain/Builder/RouteBuilder";
 import {RouteQueryHandlerFactory} from "../../Queries/GetRouteFromRouteNameQuery/RouteQueryHandlerFactory";
 import {RouteDto} from "../../../Dto/RouteDto";
 

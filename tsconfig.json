@@ -3,7 +3,8 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": false
   },
   "include": [
     "src"

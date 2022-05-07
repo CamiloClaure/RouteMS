@@ -1,8 +1,8 @@
 import {Entity, PrimaryGeneratedColumn, Column, Timestamp, OneToMany, PrimaryColumn} from "typeorm";
-import {GenericEntity} from "./GenericEntity";
+import {CommonEntity} from "./CommonEntity";
 
 @Entity()
-export class Route extends GenericEntity{
+export class Route extends CommonEntity{
     constructor(id: string) {
         super();
         this.id = id
