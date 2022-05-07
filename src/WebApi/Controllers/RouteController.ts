@@ -1,9 +1,3 @@
-import {FlightDto} from "../../Application/Dto/FligthDto";
-import {
-    CreateFlightCommandFactory
-} from "../../Application/UseCases/Command/CreateFlightCommand/CreateFlightCommandFactory";
-import {CreateFlightCommand} from "../../Application/UseCases/Command/CreateFlightCommand/CreateFlightCommand";
-
 var express = require('express')
 var routeControllerRouter = express.Router()
 

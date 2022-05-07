@@ -19,9 +19,4 @@ export class NameValue extends ValueObject {
   getName(value: NameValue): string {
     return value.Name
   }
-
-  // static implicit operator PersonNameValue(string name)
-  //    {
-  //        return new PersonNameValue(name);
-  //    }
 }
