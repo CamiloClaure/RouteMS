@@ -5,7 +5,7 @@ import {Flight} from "../Flight/Flight"
 import {Destination} from "../Destination/Destination"
 
 export class Airport extends AggregateRoot<string> {
-  _Name!: NameValue
+  private _Name!: NameValue
   _flights: Flight[] = []
   constructor(name: string) {
     super()

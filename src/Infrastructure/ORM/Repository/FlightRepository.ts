@@ -1,0 +1,60 @@
+import {IFlightRepository} from "../../../Domain/Repositories/IFlightRepository";
+import {Flight} from "../../../Domain/Model/Flight/Flight";
+import {IBussinessRule} from "../../../SharedKernel/Core/IBussinessRule";
+import {DomainEvent} from "../../../SharedKernel/Core/DomainEvent";
+import {getManager} from "typeorm";
+
+// @ts-ignore
+export class FlightRepository implements IFlightRepository{
+
+    CreateAsync(obj: any): Promise<any> {
+        return Promise.resolve(undefined);
+    }
+
+    FindByIdAsync(id: any): Promise<any> {
+        return Promise.resolve(undefined);
+    }
+
+    createFlight(flight: Flight): Promise<any> {
+        // TODO abstraer la conexion cosa que quede funcion tipo new Model("Flight"); model.save(flight)
+        // la logica del constructor tiene la instanciacion del repositorio objetivo
+        const status = getManager().getRepository('Flight')
+            .save(flight)
+            .then(flight => {
+                console.log(`game added success: ${flight.id}`)
+                return true
+            })
+            .catch(err => {
+                console.log(`error adding game: ${err}`)
+                return false
+            })
+        return Promise.resolve(status);
+
+    }
+
+    removeFlight(flight: Flight): Promise<any> {
+        return Promise.resolve(undefined);
+    }
+
+    updateFlight(flight: Flight): Promise<any> {
+        return Promise.resolve(undefined);
+    }
+
+
+    // TODO por que tengo que implementar los metodos de Entity y el proyecto del docente no
+    AddDomainEvent(event: DomainEvent): void {
+    }
+
+    protected CheckRule(rule: IBussinessRule): void {
+    }
+
+    ClearDomainEvents(): void {
+    }
+
+    private _domainEvents: DomainEvent[];
+    private _id: any;
+    // @ts-ignore
+    get id(): any {
+    }
+
+}

@@ -1,11 +1,8 @@
 import express from "express"
 import bodyParser from "body-parser"
 import {Airport} from "./Domain/Model/Airport/Airport"
-import {Flight} from "./Domain/Model/Flight/Flight"
-import {FlightBuilder} from "./Builder/FlightBuilder"
-import {DateValue} from "./SharedKernel/ValueObjects/DateValue"
-import {Destination} from "./Domain/Model/Destination/Destination"
-import {DestinationBuilder} from "./Builder/DestinationBuilder"
+import {FlightBuilder} from "./Domain/Builder/FlightBuilder"
+import {DestinationBuilder} from "./Domain/Builder/DestinationBuilder"
 
 const app = express()
 app.listen(3000)

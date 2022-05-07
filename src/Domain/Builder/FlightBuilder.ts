@@ -1,6 +1,6 @@
-import {Flight} from "../Domain/Model/Flight/Flight"
-import {DateValue} from "../SharedKernel/ValueObjects/DateValue"
-import {Destination} from "../Domain/Model/Destination/Destination"
+import {Flight} from "../Model/Flight/Flight"
+import {DateValue} from "../../SharedKernel/ValueObjects/DateValue"
+import {Destination} from "../Model/Destination/Destination"
 export class FlightBuilder {
   private readonly _flight: Flight
 

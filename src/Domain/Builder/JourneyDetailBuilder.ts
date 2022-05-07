@@ -1,5 +1,5 @@
-import {JourneyDetail} from "../Domain/Model/Journey/JourneyDetail"
-import {NameValue} from "../SharedKernel/ValueObjects/NameValue"
+import {JourneyDetail} from "../Model/Journey/JourneyDetail"
+import {NameValue} from "../../SharedKernel/ValueObjects/NameValue"
 
 export class JourneyDetailBuilder {
   private readonly _journeyDetail: JourneyDetail
