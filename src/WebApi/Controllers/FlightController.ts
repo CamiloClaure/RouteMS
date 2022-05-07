@@ -23,7 +23,10 @@ flightRouter.post('/', (req, res, next) => {
     command.execute().then(result => {
         const statusCode = result.result ? 200 : 500;
         res.status(statusCode).send(result)
-    });
+    }).catch(err => {
+        res.status(500).send(err)
+
+    });;
 })
 
 flightRouter.get('/', (req, res, next) => {
@@ -40,6 +43,9 @@ flightRouter.put('/', (req, res, next) => {
     command.execute().then(result => {
         const statusCode = result.result ? 200 : 500;
         res.status(statusCode).send(result)
+    }).catch(err => {
+        res.status(500).send(err)
+
     });
 })
 
