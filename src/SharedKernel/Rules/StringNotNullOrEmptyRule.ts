@@ -1,20 +1,20 @@
-import {IBussinessRule} from "../Core/IBussinessRule"
+import { IBussinessRule } from '../Core/IBussinessRule';
 
 export class StringNotNullOrEmptyRule implements IBussinessRule {
-  private readonly _value: string | undefined
+  private readonly _value: string | undefined;
 
   constructor(value: string) {
-    this._value = value
+    this._value = value;
   }
 
   StringNotNullOrEmptyRule() {
-    console.log("lol")
+    console.log('lol');
   }
   Message(): string {
-    return "String cannot be empty"
+    return 'String cannot be empty';
   }
 
   IsValid(): boolean {
-    return this._value !== ""
+    return this._value !== '';
   }
 }

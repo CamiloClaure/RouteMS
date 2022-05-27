@@ -1,6 +1,6 @@
 export class FlightDto {
-    id: string;
-    route: string;
-    departureDate: Date;
-    arrivalDate: Date;
+  id: string;
+  route: string;
+  departureDate: Date;
+  arrivalDate: Date;
 }

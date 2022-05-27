@@ -1,3 +1,3 @@
 export type ICommandResponse = {
-    result:any
-}
+  result: any;
+};

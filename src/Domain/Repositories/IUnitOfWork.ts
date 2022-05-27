@@ -1,4 +1,3 @@
-interface IUnitOfWork
-{
-    Commit(): Promise<any>;
+interface IUnitOfWork {
+  Commit(): Promise<any>;
 }

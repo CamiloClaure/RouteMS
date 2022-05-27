@@ -1,41 +1,42 @@
-import {FlightRepository} from "../../../../Infrastructure/ORM/Repository/FlightRepository";
-import {FlightDto} from "../../../Dto/FligthDto";
-import {FlightBuilder} from "../../../../Domain/Builder/FlightBuilder";
-import {RouteQueryHandlerFactory} from "../../Queries/GetRouteFromRouteNameQuery/RouteQueryHandlerFactory";
-import {RouteDto} from "../../../Dto/RouteDto";
-
+import { FlightRepository } from '../../../../Infrastructure/ORM/Repository/FlightRepository';
+import { FlightDto } from '../../../Dto/FligthDto';
+import { FlightBuilder } from '../../../../Domain/Builder/FlightBuilder';
+import { RouteQueryHandlerFactory } from '../../Queries/GetRouteFromRouteNameQuery/RouteQueryHandlerFactory';
+import { RouteDto } from '../../../Dto/RouteDto';
+import { IFlightRepository } from '../../../../Domain/Repositories/IFlightRepository';
 
 export class CreateFlightHandler<ICommand> {
-    private flight:FlightDto;
+  private flight: FlightDto;
+  private flightRepository: IFlightRepository;
 
-    constructor(flight:FlightDto) {
-        this.flight = flight
-    }
+  constructor(flight: FlightDto, flightRepository: IFlightRepository) {
+    this.flight = flight;
+    this.flightRepository = flightRepository;
+  }
 
-    public execute = async () => {
-        const routeQueryHandler = new RouteQueryHandlerFactory()
-        const queryName = "GetRouteByRouteNameQuery"
-        const routeDto = new RouteDto();
-        routeDto.name = this.flight.route
-        const queryConfig =  {
-            queryName,
-            args: routeDto
-        }
-        const query = routeQueryHandler.makeQuery(queryConfig);
-        const routeModel = await query.execute()
-        console.log({routeModel})
-        const flightRepository = new FlightRepository();
+  public execute = async () => {
+    console.log('CreateFlightHandler');
+    const routeQueryHandler = new RouteQueryHandlerFactory();
+    const queryName = 'GetRouteByRouteNameQuery';
+    const routeDto = new RouteDto();
+    routeDto.name = this.flight.route;
+    const queryConfig = {
+      queryName,
+      args: routeDto,
+    };
+    const query = routeQueryHandler.makeQuery(queryConfig);
+    console.log(query);
+    const routeModel = await query.execute();
+    console.log({ routeModel });
+    const flightBuilder = new FlightBuilder();
+    const flight = flightBuilder
+      .setArrivalDate(this.flight.departureDate)
+      .setDepartureDate(this.flight.departureDate)
+      .setRoute(routeModel.result)
+      .build();
 
-        // TODO inyectar el repository
-        // TODO agregar builder para flight
-        let flightBuilder = new FlightBuilder()
-        let flight = flightBuilder.setArrivalDate(this.flight.departureDate)
-            .setDepartureDate(this.flight.departureDate)
-            .setRoute(routeModel.result)
-            .build()
+    const flightId = await this.flightRepository.createFlight(flight);
 
-        const flightId = await flightRepository.createFlight(flight);
-
-        return { flightId }
-    }
+    return { flightId };
+  };
 }

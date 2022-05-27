@@ -1,5 +1,5 @@
-import { IQueryResponse } from './IQueryResponse'
+import { IQueryResponse } from './IQueryResponse';
 
 export default interface IQuery {
-    execute: () => Promise<IQueryResponse>
+  execute: () => Promise<IQueryResponse>;
 }

@@ -1,4 +1,3 @@
-export interface IFlightService
-{
-    getCodeFromAirport(): string
+export interface IFlightService {
+  getCodeFromAirport(): string;
 }

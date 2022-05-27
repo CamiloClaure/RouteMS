@@ -7,9 +7,7 @@
   "logging": true,
   "host": "localhost",
   "port": 5432,
-  "entities": [
-    "src/infrastructure/ORM/entities/**/*.ts"
-  ],
+  "entities": ["dist/Infrastructure/ORM/Entities/**/*.js"],
   "migrations": [
     "src/migration/**/*.ts"
   ],
