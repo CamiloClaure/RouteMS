@@ -1,17 +1,17 @@
 import ICommand from '../ICommand';
 import { CRUDCommandFactory } from '../CRUDCommandHandler/CRUDFlightFactory';
 import { FlightDto } from '../../../Dto/FligthDto';
-import { log } from "util";
+
 export class CreateFlightCommand implements ICommand {
-  private flight: FlightDto;
-  private name: string = '';
+  private readonly flight: FlightDto;
+  private name = '';
 
   constructor(flight: FlightDto) {
     this.flight = flight;
   }
 
   public execute = async () => {
-    console.log("creating command");
+    console.log('creating command');
     const crudCommandFactory = new CRUDCommandFactory();
 
     // const commandName = DomainGameCommands.CreateGame.name
