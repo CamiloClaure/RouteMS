@@ -6,7 +6,7 @@ import { Connection, getManager } from 'typeorm';
 @Controller('flight')
 export class FlightController {
   constructor(
-    private readonly createFlightCommandFactory: CreateFlightCommandFactory<any>, private connection: Connection
+    private readonly createFlightCommandFactory: CreateFlightCommandFactory<any>,
   ) {}
 
   @Post()
@@ -15,12 +15,12 @@ export class FlightController {
       commandName: 'CreateFlightCommand',
       args: flightDto,
     };
+    console.log(flightDto);
     const command = this.createFlightCommandFactory.makeCommand(commandConfig);
     console.log(command);
-    command
+    return command
       .execute()
       .then((result) => {
-        console.log(result);
         return result;
       })
       .catch((err) => {

@@ -15,7 +15,6 @@ export class CreateFlightHandler<ICommand> {
   }
 
   public execute = async () => {
-    console.log('CreateFlightHandler');
     const routeQueryHandler = new RouteQueryHandlerFactory();
     const queryName = 'GetRouteByRouteNameQuery';
     const routeDto = new RouteDto();
@@ -25,17 +24,15 @@ export class CreateFlightHandler<ICommand> {
       args: routeDto,
     };
     const query = routeQueryHandler.makeQuery(queryConfig);
-    console.log(query);
     const routeModel = await query.execute();
-    console.log({ routeModel });
     const flightBuilder = new FlightBuilder();
-    const flight = flightBuilder
-      .setArrivalDate(this.flight.departureDate)
+    const flightModel = flightBuilder
+      .setArrivalDate(this.flight.arrivalDate)
       .setDepartureDate(this.flight.departureDate)
       .setRoute(routeModel.result)
       .build();
-
-    const flightId = await this.flightRepository.createFlight(flight);
+    flightModel.consolidateFlight();
+    const flightId = await this.flightRepository.createFlight(flightModel);
 
     return { flightId };
   };

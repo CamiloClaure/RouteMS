@@ -3,7 +3,9 @@ import { Flight as FlightDomain } from '../../../Domain/Model/Flight/Flight';
 import { Flight } from '../Entities/Flight.entity';
 import { getManager } from 'typeorm';
 import { Route } from '../Entities/Route.entity';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class FlightRepository implements IFlightRepository {
   CreateAsync(obj: any): Promise<any> {
     return Promise.resolve(undefined);
@@ -16,7 +18,7 @@ export class FlightRepository implements IFlightRepository {
   createFlight(flightDomain: FlightDomain): Promise<any> {
     // TODO abstraer la conexion cosa que quede funcion tipo new Model("Flight"); model.save(flight)
     // la logica del constructor tiene la instanciacion del repositorio objetivo
-    let flight = new Flight();
+    const flight = new Flight();
     flight.id = flightDomain.id;
     flight.route = new Route(flightDomain.route.id).id;
     flight.arrivalDate = flightDomain.arrivalDate.date;

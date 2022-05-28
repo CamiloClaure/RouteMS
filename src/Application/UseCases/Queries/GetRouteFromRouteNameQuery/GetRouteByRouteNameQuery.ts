@@ -4,7 +4,7 @@ import { FlightDto } from '../../../Dto/FligthDto';
 import { RouteDto } from '../../../Dto/RouteDto';
 export class GetRouteByRouteNameQuery implements IQuery {
   private route: RouteDto;
-  private name: string = '';
+  private name = '';
 
   constructor(flight: RouteDto) {
     this.route = flight;
@@ -20,10 +20,7 @@ export class GetRouteByRouteNameQuery implements IQuery {
     };
     const command = queryFactory.makeCommand(config);
 
-    console.log("resultsafsdfsdfsdfsdfsfd");
     const results = await command.execute();
-    console.log("results");
-    console.log(results);
     return { result: results };
   };
 }

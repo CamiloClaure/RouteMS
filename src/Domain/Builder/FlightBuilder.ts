@@ -14,6 +14,7 @@ export class FlightBuilder {
   }
 
   setArrivalDate(arrivalTime: Date) {
+    console.log(arrivalTime);
     this._flight.arrivalDate = new DateValue(arrivalTime);
     return this;
   }

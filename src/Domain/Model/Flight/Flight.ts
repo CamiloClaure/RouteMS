@@ -2,6 +2,7 @@ import { AggregateRoot } from '../../../SharedKernel/Core/AggregateRoot';
 import { v4 as uuidv4 } from 'uuid';
 import { DateValue } from '../../../SharedKernel/ValueObjects/DateValue';
 import { Route } from '../Route/Route';
+import { FlightCreated } from '../../Event/FlightCreated';
 
 export class Flight extends AggregateRoot<string> {
   private _departureDate!: DateValue;
@@ -35,5 +36,8 @@ export class Flight extends AggregateRoot<string> {
 
   set route(value: Route) {
     this._route = value;
+  }
+  consolidateFlight() {
+    this.AddDomainEvent(new FlightCreated(this.id));
   }
 }
