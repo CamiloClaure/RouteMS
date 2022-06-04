@@ -1,5 +1,3 @@
-import { Route } from '../../../Domain/Model/Route/Route';
-
-export type IQueryResponse = {
-  result: Route;
+export type IQueryResponse<T> = {
+  result: T;
 };

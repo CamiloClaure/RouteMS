@@ -1,17 +1,12 @@
 import ICommandConfig from '../ICommandConfig';
 import { CreateFlightHandler } from './CreateFlightHandler';
-import { UpdateFlightHandler } from './UpdateFlightHandler';
-import { IFlightRepository } from '../../../../Domain/Repositories/IFlightRepository';
+import { FlightService } from '../../../Services/FlightService';
 
 export class CRUDCommandFactory<ICommandFactory> {
-  constructor(private flightRepository: IFlightRepository) {
-    console.log(flightRepository);
-  }
+  constructor(private flightService: FlightService) {}
   makeCommand = (config: ICommandConfig) => {
     if (config.commandName == CreateFlightHandler.name) {
-      return new CreateFlightHandler(config.args, this.flightRepository);
-    } else if (config.commandName == UpdateFlightHandler.name) {
-      return new UpdateFlightHandler(config.args);
+      return new CreateFlightHandler(config.args, this.flightService);
     } else {
       throw new Error('Command not found!');
     }

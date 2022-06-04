@@ -7,9 +7,6 @@ export class StringNotNullOrEmptyRule implements IBussinessRule {
     this._value = value;
   }
 
-  StringNotNullOrEmptyRule() {
-    console.log('lol');
-  }
   Message(): string {
     return 'String cannot be empty';
   }

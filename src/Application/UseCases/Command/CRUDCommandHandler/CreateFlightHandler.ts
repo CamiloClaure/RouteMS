@@ -1,39 +1,17 @@
-import { FlightRepository } from '../../../../Infrastructure/ORM/Repository/FlightRepository';
 import { FlightDto } from '../../../Dto/FligthDto';
-import { FlightBuilder } from '../../../../Domain/Builder/FlightBuilder';
-import { RouteQueryHandlerFactory } from '../../Queries/GetRouteFromRouteNameQuery/RouteQueryHandlerFactory';
-import { RouteDto } from '../../../Dto/RouteDto';
-import { IFlightRepository } from '../../../../Domain/Repositories/IFlightRepository';
+import { FlightService } from '../../../Services/FlightService';
 
 export class CreateFlightHandler<ICommand> {
-  private flight: FlightDto;
-  private flightRepository: IFlightRepository;
+  private readonly flight: FlightDto;
+  private flightService: FlightService;
 
-  constructor(flight: FlightDto, flightRepository: IFlightRepository) {
+  constructor(flight: FlightDto, flightService: FlightService) {
     this.flight = flight;
-    this.flightRepository = flightRepository;
+    this.flightService = flightService;
   }
 
   public execute = async () => {
-    const routeQueryHandler = new RouteQueryHandlerFactory();
-    const queryName = 'GetRouteByRouteNameQuery';
-    const routeDto = new RouteDto();
-    routeDto.name = this.flight.route;
-    const queryConfig = {
-      queryName,
-      args: routeDto,
-    };
-    const query = routeQueryHandler.makeQuery(queryConfig);
-    const routeModel = await query.execute();
-    const flightBuilder = new FlightBuilder();
-    const flightModel = flightBuilder
-      .setArrivalDate(this.flight.arrivalDate)
-      .setDepartureDate(this.flight.departureDate)
-      .setRoute(routeModel.result)
-      .build();
-    flightModel.consolidateFlight();
-    const flightId = await this.flightRepository.createFlight(flightModel);
-
+    const flightId = await this.flightService.createFlight(this.flight);
     return { flightId };
   };
 }

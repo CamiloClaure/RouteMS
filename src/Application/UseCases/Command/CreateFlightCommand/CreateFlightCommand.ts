@@ -27,6 +27,6 @@ export class CreateFlightCommand implements ICommand {
     const flightId = await this.crudCommandFactory
       .makeCommand(config)
       .execute();
-    return flightId ? { result: flightId } : { result: false };
+    return { result: flightId };
   };
 }

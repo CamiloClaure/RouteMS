@@ -37,6 +37,10 @@ export class Flight extends AggregateRoot<string> {
   set route(value: Route) {
     this._route = value;
   }
+
+  get domainEvents(): Array<any> {
+    return this.domainEvents;
+  }
   consolidateFlight() {
     this.AddDomainEvent(new FlightCreated(this.id));
   }

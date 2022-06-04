@@ -1,25 +1,17 @@
-import { FlightRepository } from '../../../../Infrastructure/ORM/Repository/FlightRepository';
-import { Flight } from '../../../../Domain/Model/Flight/Flight';
-import { FlightDto } from '../../../Dto/FligthDto';
-import { FlightBuilder } from '../../../../Domain/Builder/FlightBuilder';
-import { Route } from '../../../../Domain/Model/Route/Route';
-import { RouteBuilder } from '../../../../Domain/Builder/RouteBuilder';
 import { RouteDto } from '../../../Dto/RouteDto';
-import { RouteRepository } from '../../../../Infrastructure/ORM/Repository/RouteRepository';
+import { RouteService } from '../../../Services/RouteService';
 
 export class GetRouteByRouteName<IQuery> {
   private route: RouteDto;
+  private routeService: RouteService;
 
-  constructor(route: RouteDto) {
+  constructor(route: RouteDto, routeService: RouteService) {
     this.route = route;
+    this.routeService = routeService;
   }
 
   public execute = async () => {
-    const routeEntity = await new RouteRepository().FindByNameAsync(
-      this.route.name,
-    );
-    return new RouteBuilder(new Route(routeEntity.id))
-      .setName(routeEntity.name)
-      .build();
+    return (await this.routeService.getRouteFromRouteName(this.route.name))
+      .result;
   };
 }

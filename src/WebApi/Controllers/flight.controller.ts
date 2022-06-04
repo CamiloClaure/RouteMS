@@ -15,9 +15,7 @@ export class FlightController {
       commandName: 'CreateFlightCommand',
       args: flightDto,
     };
-    console.log(flightDto);
     const command = this.createFlightCommandFactory.makeCommand(commandConfig);
-    console.log(command);
     return command
       .execute()
       .then((result) => {

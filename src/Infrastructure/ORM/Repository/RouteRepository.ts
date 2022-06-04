@@ -6,7 +6,9 @@ import { DomainEvent } from '../../../SharedKernel/Core/DomainEvent';
 import { getManager } from 'typeorm';
 import { IRouteRepository } from '../../../Domain/Repositories/IRouteRepository';
 import { Route } from '../../../Domain/Model/Route/Route';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class RouteRepository implements IRouteRepository {
   CreateAsync(obj: any): Promise<any> {
     return Promise.resolve(undefined);

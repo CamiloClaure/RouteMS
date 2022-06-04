@@ -18,8 +18,6 @@ export class Airport extends AggregateRoot<string> {
   }
 
   getFlightCode(flightDate: Date, destination: Route) {
-    return `${flightDate.getDate().toString()}-${destination.name.getName(
-      destination.name,
-    )}`;
+    return `${flightDate.getDate().toString()}-${destination.name.Name}`;
   }
 }

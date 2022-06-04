@@ -3,7 +3,7 @@ import { IBussinessRule } from '../Core/IBussinessRule';
 export class NotNullRule implements IBussinessRule {
   private _value: object | undefined;
 
-  NotNullRule(value: object) {
+  constructor(value: any) {
     this._value = value;
   }
 

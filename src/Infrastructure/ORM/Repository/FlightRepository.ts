@@ -27,11 +27,9 @@ export class FlightRepository implements IFlightRepository {
       .getRepository('Flight')
       .save(flight)
       .then((flight) => {
-        console.log(`flight added success: ${flight.id}`);
         return flight.id;
       })
       .catch((err) => {
-        console.log(`error adding flight: ${err}`);
         return null;
       });
     return Promise.resolve(status);

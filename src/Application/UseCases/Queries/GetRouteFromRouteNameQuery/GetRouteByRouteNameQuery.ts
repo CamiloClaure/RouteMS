@@ -1,17 +1,19 @@
 import IQuery from '../IQuery';
 import { RouteByNameQueryHandlerFactory } from '../GetRouteByRouteNameHandler/RouteByNameQueryHandlerFactory';
-import { FlightDto } from '../../../Dto/FligthDto';
 import { RouteDto } from '../../../Dto/RouteDto';
-export class GetRouteByRouteNameQuery implements IQuery {
+import { Route } from '../../../../Domain/Model/Route/Route';
+import { RouteService } from '../../../Services/RouteService';
+export class GetRouteByRouteNameQuery implements IQuery<Route> {
   private route: RouteDto;
   private name = '';
-
-  constructor(flight: RouteDto) {
+  private routeService: RouteService;
+  constructor(flight: RouteDto, routeService: RouteService) {
     this.route = flight;
+    this.routeService = routeService;
   }
 
   public execute = async () => {
-    const queryFactory = new RouteByNameQueryHandlerFactory();
+    const queryFactory = new RouteByNameQueryHandlerFactory(this.routeService);
     const queryName = 'GetRouteByRouteName';
 
     const config = {

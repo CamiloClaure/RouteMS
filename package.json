@@ -25,11 +25,14 @@
     "@nestjs/core": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/typeorm": "^8.0.4",
+    "jest-ts-auto-mock": "^2.1.0",
     "pg": "^8.7.3",
     "postgresql": "^0.0.1",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "ts-auto-mock": "^3.6.2",
+    "ttypescript": "^1.5.13"
   },
   "devDependencies": {
     "@nestjs/cli": "^8.0.0",
@@ -67,9 +70,16 @@
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "collectCoverageFrom": [
-      "**/*.(t|j)s"
+      "**/*.(t|j)s",
+      "!**/node_modules/**",
+      "!**/folder-with-untested-files/**"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "globals": {
+      "ts-jest": {
+        "compiler": "ttypescript"
+      }
+    }
   }
 }
