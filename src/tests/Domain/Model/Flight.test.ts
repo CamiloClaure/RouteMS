@@ -14,6 +14,7 @@ describe('Creating a FlightCodeGenerated', () => {
     const flight = new Flight();
     flight.route = new Route();
     flight.arrivalDate = new DateValue(new Date());
+    flight.departureDate = new DateValue(new Date());
     flight.consolidateFlight();
     expect(flight).not.toBe(null);
     expect(flight.domainEvents).toHaveLength(1);

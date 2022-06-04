@@ -74,6 +74,16 @@
       "!**/node_modules/**",
       "!**/folder-with-untested-files/**"
     ],
+    "coveragePathIgnorePatterns": [
+      "node_modules",
+      "test-config",
+      "interfaces",
+      "jestGlobalMocks.ts",
+      ".module.ts",
+      "src/main.ts",
+      "src/main.js",
+      ".mock.ts"
+    ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
     "globals": {

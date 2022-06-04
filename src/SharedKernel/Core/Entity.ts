@@ -4,7 +4,7 @@ import { BussinessRuleValidationException } from './Exceptions/BussinessRuleVali
 
 export abstract class Entity<TId> {
   private _id: TId | undefined;
-  private _domainEvents!: DomainEvent[];
+  protected _domainEvents!: DomainEvent[];
 
   protected constructor() {
     this._domainEvents = [];

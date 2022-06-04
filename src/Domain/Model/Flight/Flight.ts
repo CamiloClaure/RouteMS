@@ -39,7 +39,7 @@ export class Flight extends AggregateRoot<string> {
   }
 
   get domainEvents(): Array<any> {
-    return this.domainEvents;
+    return this._domainEvents;
   }
   consolidateFlight() {
     this.AddDomainEvent(new FlightCreated(this.id));
