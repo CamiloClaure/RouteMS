@@ -28,7 +28,6 @@ describe('Flight Service', () => {
     expect(flightService.createFlight(flightDto)).resolves.toEqual('11');
   });
   test('Creates a flight', () => {
-    // TODO actually implement this method
     expect(flightService.getCodeFromAirport()).toEqual('this is a code');
   });
 });
