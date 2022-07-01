@@ -3,9 +3,9 @@
   "username": "postgres",
   "password": "postgres",
   "database": "postgres",
-  "synchronize": false,
+  "synchronize": true,
   "logging": false,
-  "host": "localhost",
+  "host": "routems-db",
   "port": 5432,
   "entities": ["dist/Infrastructure/ORM/Entities/**/*.js"],
   "migrations": [
