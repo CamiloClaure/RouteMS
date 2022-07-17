@@ -10,14 +10,14 @@ routeEntity.name = 'CBBA';
 
 const routeRepository = createMock<RouteRepository>();
 routeRepository.FindByNameAsync = (param) => {
-  return Promise.resolve(routeEntity);
+	return Promise.resolve(routeEntity);
 };
 
 const routeServiceTest = new RouteService(routeRepository);
 
 describe('Route Service', () => {
-  test('Gets a route based on its name', async () => {
-    const name = await routeServiceTest.getRouteFromRouteName('CBBA');
-    expect(name.result.name).toEqual({ Name: 'CBBA' });
-  });
+	test('Gets a route based on its name', async () => {
+		const name = await routeServiceTest.getRouteFromRouteName('CBBA');
+		expect(name.result.name).toEqual({ Name: 'CBBA' });
+	});
 });

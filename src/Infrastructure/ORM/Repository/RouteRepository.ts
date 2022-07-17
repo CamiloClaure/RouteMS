@@ -10,30 +10,30 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class RouteRepository implements IRouteRepository {
-  CreateAsync(obj: any): Promise<any> {
-    return Promise.resolve(undefined);
-  }
+	CreateAsync(obj: any): Promise<any> {
+		return Promise.resolve(undefined);
+	}
 
-  FindByIdAsync(id: any): Promise<any> {
-    return getManager().getRepository('Route').findOne({
-      id: id,
-    });
-  }
-  FindByNameAsync(name: any): Promise<any> {
-    return getManager().getRepository('Route').findOne({
-      name: name,
-    });
-  }
+	FindByIdAsync(id: any): Promise<any> {
+		return getManager().getRepository('Route').findOne({
+			id: id,
+		});
+	}
+	FindByNameAsync(name: any): Promise<any> {
+		return getManager().getRepository('Route').findOne({
+			name: name,
+		});
+	}
 
-  createRoute(route: Route): Promise<any> {
-    return Promise.resolve(undefined);
-  }
+	createRoute(route: Route): Promise<any> {
+		return Promise.resolve(undefined);
+	}
 
-  removeRoute(route: Route): Promise<any> {
-    return Promise.resolve(undefined);
-  }
+	removeRoute(route: Route): Promise<any> {
+		return Promise.resolve(undefined);
+	}
 
-  updateRoute(route: Route): Promise<any> {
-    return Promise.resolve(undefined);
-  }
+	updateRoute(route: Route): Promise<any> {
+		return Promise.resolve(undefined);
+	}
 }

@@ -1,22 +1,22 @@
 import { IBussinessRule } from '../IBussinessRule';
 
 export class BussinessRuleValidationException extends Error {
-  BrokenRule: IBussinessRule | undefined;
+	BrokenRule: IBussinessRule | undefined;
 
-  Details = '';
+	Details = '';
 
-  constructor(brokenRule?: any) {
-    super('');
-    if (brokenRule.brokenRule) {
-      this.BrokenRule = brokenRule.brokenRule;
-      this.Details = brokenRule.brokenRule.Message();
-    } else if (brokenRule) {
-      this.BrokenRule = brokenRule;
-      this.Details = brokenRule.Message();
-    }
-  }
+	constructor(brokenRule?: any) {
+		super('');
+		if (brokenRule.brokenRule) {
+			this.BrokenRule = brokenRule.brokenRule;
+			this.Details = brokenRule.brokenRule.Message();
+		} else if (brokenRule) {
+			this.BrokenRule = brokenRule;
+			this.Details = brokenRule.Message();
+		}
+	}
 
-  error(): string {
-    return `${this.Details}`;
-  }
+	error(): string {
+		return `${this.Details}`;
+	}
 }

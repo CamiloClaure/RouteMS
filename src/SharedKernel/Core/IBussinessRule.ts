@@ -1,5 +1,5 @@
 export interface IBussinessRule {
-  IsValid(): boolean;
+	IsValid(): boolean;
 
-  Message(): string;
+	Message(): string;
 }

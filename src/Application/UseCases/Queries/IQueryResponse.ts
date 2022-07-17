@@ -1,3 +1,3 @@
 export type IQueryResponse<T> = {
-  result: T;
+	result: T;
 };

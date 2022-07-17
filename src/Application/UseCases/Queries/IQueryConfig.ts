@@ -1,4 +1,4 @@
 export default interface IQueryConfig {
-  queryName: string;
-  args: any;
+	queryName: string;
+	args: any;
 }

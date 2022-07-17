@@ -14,20 +14,20 @@ const routeModel = new RouteBuilder().setName('CBBA').build();
 
 const routeService = createMock<RouteService>();
 routeService.getRouteFromRouteName = (param) => {
-  return Promise.resolve({ result: routeModel });
+	return Promise.resolve({ result: routeModel });
 };
 const flightRepository = createMock<IFlightRepository>();
 flightRepository.createFlight = (param) => {
-  return Promise.resolve('11');
+	return Promise.resolve('11');
 };
 
 const flightService = new FlightService(flightRepository, routeService);
 
 describe('Flight Service', () => {
-  test('Creates a flight', () => {
-    expect(flightService.createFlight(flightDto)).resolves.toEqual('11');
-  });
-  test('Creates a flight', () => {
-    expect(flightService.getCodeFromAirport()).toEqual('this is a code');
-  });
+	test('Creates a flight', () => {
+		expect(flightService.createFlight(flightDto)).resolves.toEqual('11');
+	});
+	test('Creates a flight', () => {
+		expect(flightService.getCodeFromAirport()).toEqual('this is a code');
+	});
 });
