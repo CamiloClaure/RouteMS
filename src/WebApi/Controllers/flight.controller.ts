@@ -23,4 +23,8 @@ export class FlightController {
 				return err;
 			});
 	}
+	@Get()
+	getFlight(@Body() flightDto: FlightDto): any {
+		return "true"
+	}
 }
