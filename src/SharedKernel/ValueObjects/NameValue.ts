@@ -3,20 +3,20 @@ import { BussinessRuleValidationException } from '../Core/Exceptions/BussinessRu
 import { StringNotNullOrEmptyRule } from '../Rules/StringNotNullOrEmptyRule';
 
 export class NameValue extends ValueObject {
-  Name: string;
+	Name: string;
 
-  constructor(name: string) {
-    super();
-    this.CheckRule(new StringNotNullOrEmptyRule(name));
-    if (name.length > 500) {
-      throw new BussinessRuleValidationException({
-        message: "PersonName can't be more than 500 characters",
-      });
-    }
-    this.Name = name;
-  }
+	constructor(name: string) {
+		super();
+		this.CheckRule(new StringNotNullOrEmptyRule(name));
+		if (name.length > 500) {
+			throw new BussinessRuleValidationException({
+				message: "PersonName can't be more than 500 characters",
+			});
+		}
+		this.Name = name;
+	}
 
-  getName(value: NameValue): string {
-    return value.Name;
-  }
+	getName(value: NameValue): string {
+		return value.Name;
+	}
 }

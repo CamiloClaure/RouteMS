@@ -5,20 +5,18 @@ import { FlightDto } from '../../../Application/Dto/FligthDto';
 import { FlightService } from '../../../Application/Services/FlightService';
 
 const commandConfig = {
-  commandName: 'CreateFlightCommand',
-  args: new FlightDto(),
+	commandName: 'CreateFlightCommand',
+	args: new FlightDto(),
 };
 
 describe('FlightController', () => {
-  let flightController: FlightController;
-  const flightService = createMock<FlightService>();
-  const createFlightCommandFactory = new CreateFlightCommandFactory(
-    flightService,
-  );
+	let flightController: FlightController;
+	const flightService = createMock<FlightService>();
+	const createFlightCommandFactory = new CreateFlightCommandFactory(flightService);
 
-  test('does something', async () => {
-    flightController = new FlightController(createFlightCommandFactory);
-    const result = await flightController.createFlight(new FlightDto());
-    expect(result).not.toBe(null);
-  });
+	test('does something', async () => {
+		flightController = new FlightController(createFlightCommandFactory);
+		const result = await flightController.createFlight(new FlightDto());
+		expect(result).not.toBe(null);
+	});
 });

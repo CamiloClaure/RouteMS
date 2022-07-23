@@ -9,14 +9,8 @@ import { FlightService } from './Application/Services/FlightService';
 import { RouteRepository } from './Infrastructure/ORM/Repository/RouteRepository';
 
 @Module({
-  imports: [TypeOrmModule.forRoot()],
-  controllers: [FlightController],
-  providers: [
-    RouteService,
-    FlightService,
-    RouteRepository,
-    CreateFlightCommandFactory,
-    FlightRepository,
-  ],
+	imports: [TypeOrmModule.forRoot()],
+	controllers: [FlightController],
+	providers: [RouteService, FlightService, RouteRepository, CreateFlightCommandFactory, FlightRepository],
 })
 export class AppModule {}
