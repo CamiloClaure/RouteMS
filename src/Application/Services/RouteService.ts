@@ -1,6 +1,4 @@
 import { IRouteService } from './IRouteService';
-import { RouteQueryHandlerFactory } from '../UseCases/Queries/GetRouteFromRouteNameQuery/RouteQueryHandlerFactory';
-import { RouteDto } from '../Dto/RouteDto';
 import { Route } from '../../Domain/Model/Route/Route';
 import { IQueryResponse } from '../UseCases/Queries/IQueryResponse';
 import { Injectable } from '@nestjs/common';

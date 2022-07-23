@@ -1,4 +1,3 @@
-import { Flight } from '../../Domain/Model/Flight/Flight';
 import { FlightDto } from '../Dto/FligthDto';
 
 export interface IFlightService {
