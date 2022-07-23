@@ -15,14 +15,14 @@ export class Flight {
 	@PrimaryColumn('varchar', {
 		length: 100,
 	})
-	id: string;
+		id: string;
 
 	@Column({ nullable: true })
-	route: string;
+		route: string;
 
 	@Column({ nullable: true })
-	departureDate: Date;
+		departureDate: Date;
 
 	@Column({ nullable: true })
-	arrivalDate: Date;
+		arrivalDate: Date;
 }

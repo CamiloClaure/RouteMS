@@ -2,6 +2,7 @@ import ICommandConfig from '../ICommandConfig';
 import { CreateFlightHandler } from './CreateFlightHandler';
 import { FlightService } from '../../../Services/FlightService';
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export class CRUDCommandFactory<ICommandFactory> {
 	constructor(private flightService: FlightService) {}
 	makeCommand = (config: ICommandConfig) => {

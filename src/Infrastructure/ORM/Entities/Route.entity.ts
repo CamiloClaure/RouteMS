@@ -9,14 +9,14 @@ export class Route extends CommonEntityEntity {
 	}
 
 	@Column({ nullable: true })
-	name: string;
+		name: string;
 
 	@Column({ nullable: true })
-	enabled: boolean;
+		enabled: boolean;
 
 	@Column({ nullable: true })
-	totalDistance: number;
+		totalDistance: number;
 
 	@Column({ nullable: true })
-	totalDuration: number;
+		totalDuration: number;
 }
