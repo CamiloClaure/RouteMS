@@ -8,6 +8,7 @@ export class Airport extends AggregateRoot<string> {
 	private _Name!: NameValue;
 	_flights: Flight[] = [];
 	constructor(name: string) {
+		// comentario de prueba
 		super();
 		this.id = uuidv4();
 		this.Name = name;
