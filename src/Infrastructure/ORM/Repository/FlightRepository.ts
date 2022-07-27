@@ -8,16 +8,17 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class FlightRepository implements IFlightRepository {
 	CreateAsync(obj: any): Promise<any> {
+		console.log(obj);
 		return Promise.resolve(undefined);
 	}
 
 	FindByIdAsync(id: any): Promise<any> {
+		console.log(id);
 		return Promise.resolve(undefined);
 	}
 
 	createFlight(flightDomain: FlightDomain): Promise<any> {
 		// TODO abstraer la conexion cosa que quede funcion tipo new Model("Flight"); model.save(flight)
-		// la logica del constructor tiene la instanciacion del repositorio objetivo
 		const flight = new Flight();
 		flight.id = flightDomain.id;
 		flight.route = new Route(flightDomain.route.id).id;
@@ -26,20 +27,23 @@ export class FlightRepository implements IFlightRepository {
 		const status = getManager()
 			.getRepository('Flight')
 			.save(flight)
-			.then((flight) => {
-				return flight.id;
+			.then((flightRes) => {
+				return flightRes.id;
 			})
 			.catch((err) => {
+				console.log(err);
 				return null;
 			});
 		return Promise.resolve(status);
 	}
 
 	removeFlight(flight: FlightDomain): Promise<any> {
+		console.log(flight);
 		return Promise.resolve(undefined);
 	}
 
 	updateFlight(flight: FlightDomain): Promise<any> {
+		console.log(flight);
 		return Promise.resolve(undefined);
 	}
 }
