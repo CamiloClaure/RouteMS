@@ -52,6 +52,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^8.0.1",
     "jest": "28.0.3",
+    "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.3.2",
     "source-map-support": "^0.5.20",
@@ -64,6 +65,7 @@
     "typescript": "^4.3.5"
   },
   "jest": {
+	  "testResultsProcessor": "jest-sonar-reporter",
     "moduleFileExtensions": [
       "js",
       "json",
@@ -79,6 +81,7 @@
       "!**/node_modules/**",
       "!**/folder-with-untested-files/**"
     ],
+    "collectCoverage": true,
     "coveragePathIgnorePatterns": [
       "node_modules",
       "test-config",
@@ -100,7 +103,7 @@
   "husky": {
     "hooks": {}
   },
-	"lint-staged": {
-		"*": "yarn lint"
-	}
+  "lint-staged": {
+    "*": "yarn lint"
+  }
 }
