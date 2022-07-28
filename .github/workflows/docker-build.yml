@@ -20,7 +20,7 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     -
       name: Push to DockerHub
-      run: docker push eriksongm/master-report:${{ secrets.MAJOR }}.${{ secrets.MINOR }}
+      run: docker push camilodev/routems:${{ secrets.MAJOR }}.${{ secrets.MINOR }}
     -
       name: Update Minor version
       uses: hmanzur/actions-set-secret@v2.0.0
