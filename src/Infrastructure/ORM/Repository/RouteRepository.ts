@@ -11,6 +11,7 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class RouteRepository implements IRouteRepository {
 	CreateAsync(obj: any): Promise<any> {
+		console.log(obj);
 		return Promise.resolve(undefined);
 	}
 
@@ -26,6 +27,7 @@ export class RouteRepository implements IRouteRepository {
 	}
 
 	createRoute(route: Route): Promise<any> {
+		console.log(route);
 		return Promise.resolve(undefined);
 	}
 
