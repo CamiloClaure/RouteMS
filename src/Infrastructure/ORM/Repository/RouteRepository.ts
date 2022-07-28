@@ -27,6 +27,7 @@ export class RouteRepository implements IRouteRepository {
 	}
 
 	createRoute(route: Route): Promise<any> {
+		console.log(route);
 		return Promise.resolve(undefined);
 	}
 
