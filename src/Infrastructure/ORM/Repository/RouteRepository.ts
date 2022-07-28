@@ -31,8 +31,8 @@ export class RouteRepository implements IRouteRepository {
 		return Promise.resolve(undefined);
 	}
 
-	removeRoute(route: Route): Promise<any> {		console.log(route);
-
+	removeRoute(route: Route): Promise<any> {
+		console.log(route);
 		return Promise.resolve(undefined);
 	}
 
