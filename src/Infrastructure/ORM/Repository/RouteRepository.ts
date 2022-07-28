@@ -32,7 +32,7 @@ export class RouteRepository implements IRouteRepository {
 	}
 
 	removeRoute(route: Route): Promise<any> {
-		console.log(route);
+		// console.log(route);
 		return Promise.resolve(undefined);
 	}
 
