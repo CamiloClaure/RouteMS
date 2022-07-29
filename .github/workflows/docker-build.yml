@@ -33,9 +33,9 @@ jobs:
           command: |
             cd /tmp
             ls -a
-          host: ${{ secrets.HOST }}
+          host: ${{ secrets.SSH_HOST }}
           user: root
-          key: ${{ secrets.PRIVATE_KEY}}
+          key: ${{ secrets.SSH_KEY}}
 #       - name: Configure SSH
 #         env:
 #           SSH_KEY: ${{ secrets.SSH_KEY }}
