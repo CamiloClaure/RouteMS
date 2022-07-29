@@ -41,7 +41,8 @@ jobs:
           command: |
             cd /tmp
             ls -a
-            docker run hello-world
+            docker rm -f routems
+            docker run -d -p 3000:3000 --name routems camilodev/routems:${{ secrets.MAJOR }}.${{ env.IMAGE_TAG }}
           host: ${{ secrets.SSH_HOST }}
           user: root
           key: ${{ secrets.SSH_KEY}}
