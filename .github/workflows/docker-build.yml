@@ -22,11 +22,35 @@ jobs:
     -
       name: Push to DockerHub
       run: docker push camilodev/routems:${{ secrets.MAJOR }}.${{ secrets.MINOR }}
-    -
-      name: Update Minor version
-      uses: hmanzur/actions-set-secret@v2.0.0
-      with:
-        name: 'MINOR'
-        value: $((${{ secrets.MINOR }}+1))
-        repository: CamiloClaure/RouteMs
-        token: ${{ secrets.GITHUB_TOKEN }}
+  staging:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configure SSH
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.KNOWN_HOST }}
+          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_USER: ${{ secrets.SSH_USERNAME }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          echo "$SSH_KEY" > ~/.ssh/staging.key
+          chmod 600 ~/.ssh/staging.key
+          cat >>~/.ssh/config <<END
+            Host staging
+              HostName $SSH_HOST
+              User $SSH_USER
+              IdentityFile ~/.ssh/staging.key
+              StrictHostKeyChecking no
+          END
+
+#     -
+#       name: Update Minor version
+#       uses: hmanzur/actions-set-secret@v2.0.0
+#       with:
+#         name: 'MINOR'
+#         value: $((${{ secrets.MINOR }}+1))
+#         repository: CamiloClaure/RouteMs
+#         token: ${{ secrets.GITHUB_TOKEN }}
