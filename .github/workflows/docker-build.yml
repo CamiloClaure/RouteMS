@@ -25,6 +25,10 @@ jobs:
     -
       name: Push to DockerHub
       run: docker push camilodev/routems:${{ secrets.MAJOR }}.${{ env.IMAGE_TAG }}
+    - name: run number with offset
+      run: |
+        echo ::set-env name=GITHUB_RUN_NUMBER_WITH_OFFSET::$(($IMAGE_TAG-1))
+    - run: echo $GITHUB_RUN_NUMBER_WITH_OFFSET
   staging:
     needs: build
     runs-on: ubuntu-latest
