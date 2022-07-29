@@ -45,7 +45,8 @@ jobs:
               IdentityFile ~/.ssh/staging.key
               StrictHostKeyChecking no
           END
-
+      - name: test
+        run: ssh staging 'mkdir ~/test'
 #     -
 #       name: Update Minor version
 #       uses: hmanzur/actions-set-secret@v2.0.0
