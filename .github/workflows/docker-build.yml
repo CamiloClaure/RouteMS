@@ -27,28 +27,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Configure SSH
-        env:
-          SSH_KEY: ${{ secrets.SSH_KEY }}
-          KNOWN_HOSTS: ${{ secrets.KNOWN_HOST }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
-          SSH_USER: ${{ secrets.SSH_USERNAME }}
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-          ssh-add - <<< "${{ secrets.SSH_KEY }}"
-          chmod 600 ~/.ssh/staging.key
-          cat >>~/.ssh/config <<END
-            Host staging
-              HostName $SSH_HOST
-              User $SSH_USER
-              IdentityFile ~/.ssh/staging.key
-              StrictHostKeyChecking no
-          END
-      - name: test
-        run: ssh staging 'mkdir ~/test'
+      - name: executing remote ssh commands using password
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd /tmp
+            ls -a
+          host: ${{ secrets.HOST }}
+          user: root
+          key: ${{ secrets.PRIVATE_KEY}}
+#       - name: Configure SSH
+#         env:
+#           SSH_KEY: ${{ secrets.SSH_KEY }}
+#           KNOWN_HOSTS: ${{ secrets.KNOWN_HOST }}
+#           SSH_HOST: ${{ secrets.SSH_HOST }}
+#           SSH_USER: ${{ secrets.SSH_USERNAME }}
+#           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+#         run: |
+#           mkdir -p ~/.ssh
+#           ssh-keyscan github.com >> ~/.ssh/known_hosts
+#           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+#           ssh-add - <<< "${{ secrets.SSH_KEY }}"
+#           chmod 600 ~/.ssh/staging.key
+#           cat >>~/.ssh/config <<END
+#             Host staging
+#               HostName $SSH_HOST
+#               User $SSH_USER
+#               IdentityFile ~/.ssh/staging.key
+#               StrictHostKeyChecking no
+#           END
+#       - name: test
+#         run: ssh staging 'mkdir ~/test'
 #     -
 #       name: Update Minor version
 #       uses: hmanzur/actions-set-secret@v2.0.0
