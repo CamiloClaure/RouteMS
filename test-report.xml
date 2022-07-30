@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\Application\UseCases\Command\CRUDHandler\CreateFlightHandler.test.ts">
+    <testCase name="Creates a flight Should be a createFlightHandler" duration="2"/>
+    <testCase name="Creates a flight Should execute createFlight" duration="2"/>
+  </file>
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\Domain\Event\FlightCodeGenerated.test.ts">
+    <testCase name="Creating a FlightCodeGenerated should create FlightCodeGenerated" duration="2"/>
+  </file>
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\SharedKernel\Core\Exceptions\BusinessRuleValidationException.test.ts">
+    <testCase name="Testing BusinessRule Validation Should throw message Object cannot be null" duration="1"/>
+    <testCase name="Testing BusinessRule Validation Should throw message Object cannot be null" duration="0"/>
+  </file>
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\Application\Dto\FlightDto.test.ts">
+    <testCase name="Creating a FlightDto should create FlightDto" duration="1"/>
+  </file>
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\Application\Dto\RouteDto.test.ts">
+    <testCase name="Creating a RouteDto should create RouteDto" duration="2"/>
+  </file>
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\Application\UseCases\Queries\GetRouteByRouteName.test.ts">
+    <testCase name="Gets a Route Should be a createFlightCommand" duration="3"/>
+    <testCase name="Gets a Route Should return an error" duration="13"/>
+    <testCase name="Gets a Route Should get a route" duration="1"/>
+  </file>
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\Domain\Model\Flight.test.ts">
+    <testCase name="Creating a FlightCodeGenerated should create FlightCodeGenerated" duration="4"/>
+  </file>
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\Domain\Model\Airport.test.ts">
+    <testCase name="Creating a FlightCodeGenerated should create FlightCodeGenerated" duration="3"/>
+  </file>
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\Application\UseCases\Command\CreateFlightCommand\CreateFlightCommand.test.ts">
+    <testCase name="Creates a flight Should be a createFlightCommand" duration="2"/>
+  </file>
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\Application\UseCases\Queries\GetRouteByRouteNameQuery.test.ts">
+    <testCase name="Gets a Route Should be a createFlightCommand" duration="2"/>
+    <testCase name="Gets a Route Should return an error" duration="10"/>
+    <testCase name="Gets a Route Should get a route" duration="1"/>
+  </file>
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\Application\Services\RouteService.test.ts">
+    <testCase name="Route Service Gets a route based on its name" duration="3"/>
+  </file>
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\Infrastructure\Repository\FlightRepository.test.ts">
+    <testCase name="Flight Service Creates a flight" duration="9"/>
+    <testCase name="Flight Service Removes a flight" duration="3"/>
+    <testCase name="Flight Service Finds a flight" duration="1"/>
+    <testCase name="Flight Service Updates a flight" duration="1"/>
+  </file>
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\Infrastructure\Repository\RouteRepository.test.ts">
+    <testCase name="Flight Service Creates a flight" duration="11"/>
+    <testCase name="Flight Service Removes a flight" duration="1"/>
+    <testCase name="Flight Service Updates a flight" duration="3"/>
+    <testCase name="Flight Service Updates a flight" duration="0"/>
+  </file>
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\Application\Services\FlightService.test.ts">
+    <testCase name="Flight Service Creates a flight" duration="3"/>
+    <testCase name="Flight Service Creates a flight" duration="1"/>
+  </file>
+  <file path="D:\Freelance\Postgrado\AereolineaMicroService\RouteMS\src\tests\WebApi\Controllers\flight.controller.test.ts">
+    <testCase name="FlightController does something" duration="30"/>
+  </file>
+</testExecutions>
