@@ -105,6 +105,6 @@
     "hooks": {}
   },
   "lint-staged": {
-    "*": "yarn lint"
+    "*.{ts,tsx,js}": ["yarn lint", "yarn test"]
   }
 }
