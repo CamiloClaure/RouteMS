@@ -90,7 +90,8 @@
       ".module.ts",
       "src/main.ts",
       "src/main.js",
-      ".mock.ts"
+      ".mock.ts",
+      "package.json"
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node",
