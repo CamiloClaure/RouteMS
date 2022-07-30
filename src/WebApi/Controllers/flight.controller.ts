@@ -25,6 +25,6 @@ export class FlightController {
 	}
 	@Get()
 	getFlight(@Body() flightDto: FlightDto): any {
-		return 'go apex?';
+		return 'go dotita?';
 	}
 }
