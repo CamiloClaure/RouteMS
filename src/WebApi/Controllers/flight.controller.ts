@@ -25,6 +25,6 @@ export class FlightController {
 	}
 	@Get()
 	getFlight(@Body() flightDto: FlightDto): any {
-		return 'presentacion del dia';
+		return 'presentacion del dia 2';
 	}
 }
