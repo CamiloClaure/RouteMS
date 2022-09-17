@@ -23,7 +23,7 @@ export class FlightService implements IFlightService {
 	async rabbitMQStuff(data: string): Promise<void> {
 		try {
 			const msg = { test: "testing" }
-			const connection = await amqplib.connect('amqp://guest:123456@143.244.148.116:5672');
+			const connection = await amqplib.connect('amqp://guest:guest@20.169.83.87:5672');
 			const channel = await connection.createChannel();
 			const result = await channel.assertQueue("vuelo-creado");
 			channel.sendToQueue("vuelo-creado", Buffer.from(JSON.stringify({ TestingRequest: { test: "testing" } })))
