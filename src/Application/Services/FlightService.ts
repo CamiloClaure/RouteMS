@@ -4,6 +4,7 @@ import { FlightDto } from '../Dto/FligthDto';
 import { FlightBuilder } from '../../Domain/Builder/FlightBuilder';
 import { RouteService } from './RouteService';
 import { FlightRepository } from '../../Infrastructure/ORM/Repository/FlightRepository';
+import * as amqplib from 'amqplib';
 
 @Injectable()
 export class FlightService implements IFlightService {
@@ -19,6 +20,19 @@ export class FlightService implements IFlightService {
 		return 'this is a code';
 	}
 
+	async rabbitMQStuff(data: string): Promise<void> {
+		try {
+			const msg = { test: "testing" }
+			const connection = await amqplib.connect('amqp://guest:123456@143.244.148.116:5672');
+			const channel = await connection.createChannel();
+			const result = await channel.assertQueue("vuelo-creado");
+			channel.sendToQueue("vuelo-creado", Buffer.from(JSON.stringify({ TestingRequest: { test: "testing" } })))
+			console.log("job sent successfully");
+		}
+		catch (e){
+			console.error(e)
+		}
+	}
 	async createFlight(flight: FlightDto): Promise<string> {
 		const route = (await this.routeService.getRouteFromRouteName(flight.route)).result;
 		const flightModel = new FlightBuilder()
@@ -27,6 +41,10 @@ export class FlightService implements IFlightService {
 			.setRoute(route)
 			.build();
 		flightModel.consolidateFlight();
-		return this.flightRepository.createFlight(flightModel);
+		const createdFlight = await this.flightRepository.createFlight(flightModel);
+		this.rabbitMQStuff(createdFlight);
+		return createdFlight
 	}
+
+
 }

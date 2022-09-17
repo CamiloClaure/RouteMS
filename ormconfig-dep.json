@@ -1,11 +1,11 @@
 {
   "type": "postgres",
   "username": "postgres",
-  "password": "30122022",
+  "password": "postgres",
   "database": "postgres",
-  "synchronize": true,
+  "synchronize": false,
   "logging": false,
-  "host": "database-1.ccub2nxwsgn7.us-east-2.rds.amazonaws.com",
+  "host": "localhost",
   "port": 5432,
   "entities": ["dist/Infrastructure/ORM/Entities/**/*.js"],
   "migrations": [
